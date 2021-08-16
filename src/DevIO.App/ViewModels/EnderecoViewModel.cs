@@ -1,0 +1,48 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DevIO.App.ViewModels
+{
+    public class EnderecoViewModel
+    {
+        [Key]
+        public Guid Id { get; set; }
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(200, ErrorMessage = "O campo {0} é precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
+        [Display(Name = "Logradouro")]
+        public string Logradouro { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(50, ErrorMessage = "O campo {0} é precisa ter entre {2} e {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Número")]
+        public string Numero { get; set; }
+        public string Complemento { get; set; }
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(8, ErrorMessage = "O campo {0} é precisa ter entre {2} e {1} caracteres", MinimumLength = 8)]
+        [Display(Name = "CEP")]
+        public string Cep { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(100, ErrorMessage = "O campo {0} é precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
+        [Display(Name = "Bairro")]
+        public string Bairro { get; set; }
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(100, ErrorMessage = "O campo {0} é precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
+        [Display(Name = "Cidade")]
+        public string Cidade { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(50, ErrorMessage = "O campo {0} é precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
+        [Display(Name = "Estado")]
+        public string Estado { get; set; }
+
+        /* EF Relations */
+        [HiddenInput]
+        public Guid FornecedorId { get; set; }
+    }
+}

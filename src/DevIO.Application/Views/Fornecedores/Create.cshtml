@@ -1,0 +1,36 @@
+﻿@model DevIO.App.ViewModels.FornecedorViewModel
+
+@{
+    ViewData["Title"] = "Novo Fornecedor";
+}
+
+<h1 class="mt-5">@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Create">
+
+            <vc:summary></vc:summary>
+
+            <partial name="_FormFornecedorAdd" />
+
+            <h4>Endereço</h4>
+            <hr />
+            <partial name="_Endereco" />
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    BuscaCep();
+</script>
+}
